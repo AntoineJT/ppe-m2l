@@ -1,0 +1,36 @@
+/* --------------------------------------------------------- */
+FONCTION decodeChar(E car : caractère) : caractère
+CONST 
+	c_ac = "?HYLUJPVREAKBNDOFSQZCWMGITX" =  // c -> const  ; ac -> alphabet-clé
+VAR
+	i : entier
+DEBUT
+	i <- 1
+	SI c_ac[0]<>car ALORS
+		TANTQUE c_ac[i]<>car FAIRE
+			i <- i+1
+		FINSI
+		RETOURNER i+0x40
+	SINON
+		RETOURNER c_ac[0]
+	FINSI
+	
+FIN
+
+/* --------------------------------------------------------- */
+PROGRAMMEPRINCIPAL
+VAR
+	text[0..25] : tableau de caractères
+	i : entier
+
+DEBUT
+	i <- 0
+	AFFICHER "Ce programme permet de déchiffrer un message sans ponctuation de 26 lettres tout au plus"
+	AFFICHER "Saisissez au max 26 caractères alphabétique : "
+	SAISIR text
+	TANTQUE text[i]<>'\0' FAIRE
+		text[i] <- decodeChar(text[i])
+		i <- i+1
+	FINTANTQUE
+	AFFICHER "Chaîne déchiffrée : ", text
+FIN
