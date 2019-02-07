@@ -1,0 +1,34 @@
+/* --------------------------------------------------------- */
+FONCTION getIndOnAC(E car : caractère) : entier
+VAR
+	val : entier
+DEBUT
+	val <- car-0x41
+	SI val>25 ALORS
+		val <- val-0x20
+	FINSI
+	SI val<0 OU val>25 ALORS // Si erreur
+		RETOURNER 0
+	FINSI
+	RETOURNER val+1
+FIN 
+
+/* --------------------------------------------------------- */
+PROGRAMMEPRINCIPAL
+CONST 
+	c_ac = "?HYLUJPVREAKBNDOFSQZCWMGITX" =  // c -> const  ; ac -> alphabet-clé
+VAR
+	text[0..25] : tableau de caractères
+	i : entier
+
+DEBUT
+	i <- 0
+	AFFICHER "Ce programme permet de chiffrer un message sans ponctuation de 26 lettres tout au plus"
+	AFFICHER "Saisissez max 26 caractères alphabétique : "
+	SAISIR text
+	TANTQUE text[i]<>'\0' FAIRE
+		text[i] <- c_ac[getIndOnAC(text[i])]
+		i <- i+1
+	FINTANTQUE
+	AFFICHER "Chaîne chiffrée : ", text
+FIN

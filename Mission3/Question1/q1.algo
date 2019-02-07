@@ -1,0 +1,19 @@
+
+PROGRAMMEPRINCIPAL
+VAR
+	text[0..25] : tableau de caractères
+	i : entier
+	decal : entier
+DEBUT
+	i <- 0
+	AFFICHER "Ce programme permet de chiffrer une chaîne de 26 caractères au maximum à l'aide d'un code de César"
+	SAISIR "Saisissez le décalage (entier) : "
+	SAISIR decal
+	AFFICHER "Saisissez la chaîne à chiffrer (26 chars max) : "
+	SAISIR text
+	TANTQUE text[i]<>'\0' FAIRE
+		text[i] <- text[i]+decal
+		i <- i+1
+	FINTANTQUE
+	AFFICHER "Chaîne chiffrée : ", text
+FIN
