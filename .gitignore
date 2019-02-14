@@ -1,0 +1,7 @@
+# Compiled files!
+bin/
+obj/
+
+# Useless CodeBlocks generated files
+*.layout
+*.depend
