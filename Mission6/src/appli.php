@@ -1,25 +1,16 @@
 <html>
     <head>
-      <title>APPLICATION_FACTURATION</title>
-      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+     	<title>Appli de Facturation</title>
+      	<meta charset="utf-8">
     </head>
     <body>
-        <h2>APPLI_FACTU</h2>
-    <p>
-
-<FORM action="cibleappli.php" method="post">
-<INPUT TYPE=submit VALUE="LIGUE">
-<br>
-</FORM>
-
-<FORM action="cibleappli2.php" method="post">
-<INPUT TYPE=submit VALUE="PRESTATION">
-<br>
-</FORM>
-
-<FORM action="cibleappli3.php" method="post">
-<INPUT TYPE=submit VALUE="FACTURE">
-<br>
-</FORM>
-</body>
+        <h1>Application de Facturation</h1>
+		<nav>
+			<ul>
+				<li><a href="cibleappli.php">Ligue</a></li>
+				<li><a href="cibleappli.php">Prestation</a></li>
+				<li><a href="cibleappli3.php">Facture</a></li>
+			</ul>
+		</nav>
+	</body>
 </html>		
