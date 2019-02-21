@@ -30,7 +30,7 @@ int main(void){
 
     puts("Ce programme permet de déchiffrer un message sans ponctuation de 26 lettres tout au plus");
     do {
-        printf("Saisissez au max 26 caractères alphabétiques : ");
+        printf("Saisissez au max 26 caractères alphabétique : ");
         // while(getchar()!='\n'); // fflush stdin
     } while(!scanf("%26s",text));
     str_set_upper(text);

@@ -14,10 +14,10 @@ int main(void){
     const char c_ac[] = "?HYLUJPVREAKBNDOFSQZCWMGITX";
     char *text = malloc(26*sizeof(char));
     unsigned int i = 0;
-
+  
     puts("Ce programme permet de CHIFFRER un message sans ponctuation de 26 lettres tout au plus");
     do {
-        printf("Saisissez au max 26 caractères alphabétiques : ");
+        printf("Saisissez au max 26 caractères alphabétique : ");
         // while(getchar()!='\n'); // fflush stdin
     } while(!scanf("%26s",text));
     while(text[i]!='\0'){
