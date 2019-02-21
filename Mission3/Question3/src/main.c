@@ -3,6 +3,8 @@
 #include <windows.h>
 
 unsigned int getIndOnAC(const char car){
+    if (car == ' ' || car == '\n')
+        return 27; // ugly fast workaround
     unsigned int val = car-0x41;
     if (val>25) // S'il ne s'agit pas de majuscules, alors retrancher l'offset entre les majuscules et minuscules
         val=val-0x20;
@@ -11,15 +13,15 @@ unsigned int getIndOnAC(const char car){
 
 int main(void){
     SetConsoleOutputCP(65001); // Set encoding character set to UTF-8
-    const char c_ac[] = "?HYLUJPVREAKBNDOFSQZCWMGITX";
-    char *text = malloc(26*sizeof(char));
+    const char c_ac[] = "?HYLUJPVREAKBNDOFSQZCWMGITX ";
+    char text[26];
     unsigned int i = 0;
-  
+
     puts("Ce programme permet de CHIFFRER un message sans ponctuation de 26 lettres tout au plus");
     do {
         printf("Saisissez au max 26 caractères alphabétique : ");
         // while(getchar()!='\n'); // fflush stdin
-    } while(!scanf("%26s",text));
+    } while(fgets(text, 26, stdin) == NULL);
     while(text[i]!='\0'){
         text[i] = c_ac[getIndOnAC(text[i])];
         i++;

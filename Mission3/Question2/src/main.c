@@ -6,7 +6,7 @@ int main(void){
     SetConsoleOutputCP(65001); // Set encoding character set to UTF-8
     unsigned int i = 0;
     unsigned int decal;
-    char *text = malloc(26*sizeof(char));
+    char text[26];
 
     puts("Ce programme permet de déchiffrer une chaîne de 26 caractères au maximum à l'aide d'un code de César");
     printf("Saisissez le décalage (entier) : ");
@@ -14,9 +14,9 @@ int main(void){
     do {
         printf("Saisissez la chaîne à déchiffrer (26 chars max) : ");
         while(getchar()!='\n'); // fflush stdin
-    } while(!scanf("%26s",text));
+    } while(fgets(text, 26, stdin) == NULL);
     while(text[i]!='\0'){
-        text[i]-=decal;
+        text[i]-=((text[i] != ' ') ? decal : 0);
         i++;
     }
     printf("Chaîne déchiffrée : %s",text);
