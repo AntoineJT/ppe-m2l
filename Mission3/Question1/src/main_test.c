@@ -12,17 +12,6 @@ void str_set_upper(char *str){
     }
 }
 
-char getEncodedChar(char car, unsigned int decal){
-    str_set_upper(&car);
-    if (car == ' ')
-        return ' ';
-    unsigned int val = car-0x41;
-    if (val>25)
-        return '?';
-    val = (val+decal)%26;
-    return val+0x41;
-}
-
 int main(void){
     SetConsoleOutputCP(65001); // Set encoding character set to UTF-8
     unsigned int i = 0;
@@ -30,14 +19,19 @@ int main(void){
     char text[26];
 
     puts("Ce programme permet de chiffrer une chaîne de 26 caractères au maximum à l'aide d'un code de César");
-    printf("Saisissez le décalage (entier) : ");
-    scanf("%u",&decal);
+    do {
+        printf("Saisissez le décalage (entier, max 25) : ");
+        scanf("%u",&decal);
+    } while(decal>=26);
     do {
         printf("Saisissez la chaîne à chiffrer (26 chars max) : ");
         while(getchar()!='\n'); // fflush stdin
     } while(fgets(text, 26, stdin) == NULL);
+    str_set_upper(text);
     while(text[i]!='\n'){
-        text[i]=getEncodedChar(text[i], decal);
+        text[i]+=(text[i] != ' ') ? decal : 0;
+        text[i]=(text[i]-0x40)%26;
+        text[i]+=0x40;
         i++;
     }
     printf("Chaîne chiffrée : %s",text);

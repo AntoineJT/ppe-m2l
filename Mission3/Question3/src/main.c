@@ -6,8 +6,8 @@ unsigned int getIndOnAC(const char car){
     if (car == ' ' || car == '\n')
         return 27; // ugly fast workaround
     unsigned int val = car-0x41;
-    if (val>25) // S'il ne s'agit pas de majuscules, alors retrancher l'offset entre les majuscules et minuscules
-        val=val-0x20;
+    if (val>25) // S'il ne s'agit pas de majuscules, alors retrancher l'offset entre les majuscules et minusculess
+		val-=0x20;
     return val>25 ? 0 : val+1; // S'il s'agit pas de caractères alphanumériques, retourner son indice, sinon renvoyer l'indice du caractère d'erreur '?'
 }
 
